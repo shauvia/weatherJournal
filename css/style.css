@@ -1,14 +1,140 @@
 body {
-  color: rgb(207 210 178);
-  background-color: rgb(75, 59, 71);
-  font-family: 'Amatic SC', cursive;
-
-  /* font-family: 'Rock Salt', cursive; */
+  background-color: rgb(57, 162, 174);
+  color: rgb(236, 221, 108);
+  font-family: 'Shadows Into Light', cursive;
 
   /* font-family: 'Dawning of a New Day', cursive; */
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 6em;
   text-align: center;
+  color: rgb(238, 220, 85);
+  font-family: 'Amatic SC', cursive;
+}  
+h2{
+  font-size: 3em;
+  color: rgb(238, 220, 85);
+  font-family: 'Amatic SC', cursive;
 }
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  column-gap: 5%;
+  grid-template-areas: 
+    'zipLab input'
+    'labelPl feelArea'
+    'butSub butSub';
+  width: 40%;
+  margin: 10em auto 0 auto;
+}
+
+#zipLabel {
+  grid-area: zipLab;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  margin-top: 2vh;
+  font-size: 2em;
+}
+
+#zip {
+  grid-area: input;
+  font-family: 'Shadows Into Light', cursive;
+  color: rgb(131, 58, 58);
+  font-size: 1.5em;
+  margin-top: 2vh;
+  background-color: rgb(255, 255, 221);
+  border-radius: 10px;
+  border-style: none;
+}
+
+#feelLabel {
+  grid-area: labelPl;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  margin-top: 4vh;
+  font-size: 3em;
+}
+
+#feelings {
+  grid-area: feelArea;
+  color: rgb(131, 58, 58);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.5em;
+  background-color: rgb(255, 255, 221);
+  margin-top: 4vh;
+  border-radius: 10px;
+  border-style: none;
+}
+
+#generate {
+  grid-area: butSub;
+  color: rgb(131, 58, 58);
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.7em;
+  background-color: rgb(247, 247, 187);
+  margin-top: 4vh;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  height: 4vh;
+  justify-self: center;
+  border-radius: 7px;
+}
+
+#entryHolder {
+  display: grid;
+  grid-template-columns: 4em 3em auto;
+  grid-template-rows: repeat(2, auto);
+  column-gap: 3%;
+  grid-template-areas: 
+    'header header header'
+    'day temperatur uInput';
+  margin: 7em 2em 0 2em;
+}
+
+h2 {
+  grid-area: header;
+}
+
+#date {
+  grid-area: day;
+  margin-top: 1.5em;
+  font-size: 2em;
+  font-family: 'Amatic SC', cursive;
+} 
+
+#temp {
+  grid-area: temperatur;
+  margin-top: 1.5em;
+  font-size: 2em;
+  font-family: 'Amatic SC', cursive;
+}
+
+#content {
+  grid-area: uInput;
+  margin-top: 1.5em;
+  font-size: 2em;
+}
+
+footer {
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+
+
+
+/* Colors: 
+USAFA Blue rgb(38, 84, 124);
+Languid Lavender rgb(229, 212, 237); nie na tło
+Cadet Blue: rgb(57, 162, 174) nie na tło
+Flax rgb(227, 216, 126); 
+Ruby Red rgb(164, 22, 35)
+
+
+Zestaw 7: 
+background-color: Cadet Blue rgb(57, 162, 174);
+color: Flax rgb(227, 216, 126); */
