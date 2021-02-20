@@ -12,6 +12,7 @@ h1 {
   color: rgb(238, 220, 85);
   font-family: 'Amatic SC', cursive;
 }  
+
 h2{
   font-size: 3em;
   color: rgb(238, 220, 85);
@@ -86,7 +87,7 @@ h2{
 
 #entryHolder {
   display: grid;
-  grid-template-columns: 4em 3em auto;
+  grid-template-columns: 4em 6em auto;
   grid-template-rows: repeat(2, auto);
   column-gap: 3%;
   grid-template-areas: 
@@ -111,6 +112,7 @@ h2 {
   margin-top: 1.5em;
   font-size: 2em;
   font-family: 'Amatic SC', cursive;
+  outline: 1px red dashed;
 }
 
 #content {

@@ -46,25 +46,11 @@ async function getAllData(url = '') {
 
 
 function displayAllData(data){
-  let date = document.getElementById('date').textContent = data.date;
-  let temp = document.getElementById('temp').textContent = data.temp;
-  let content = document.getElementById('content').textContent = data.userResponse;
+  let date = document.getElementById('date').innerHTML = data.date;
+  let temp = document.getElementById('temp').innerHTML = data.temp +" " + "F";
+  let content = document.getElementById('content').innerHTML = data.userResponse;
   console.log(1);
 }
-
-
-// async function performAction(event){
-//   const zipCode = document.getElementById('zip').value;
-//   const userInput = document.getElementById('feelings').value;
-//   console.log("zipCode: ", zipCode);
-//   weatherInfo = await getWeather(baseURL, zipCode, apiKey);
-//   console.log("temp", weatherInfo.main.temp);
-//   await postData('http://localhost:3000/postData', {temp: weatherInfo.main.temp, date: dayDate, userResponse: userInput});
-//   allData = await getAllData('http://localhost:3000/getData');
-//   console.log('allData', allData);
-//   displayAllData(allData);
-// }
-// keeping the function because I like it.
 
 function performAction2(event){
   const zipCode = document.getElementById('zip').value;
@@ -87,5 +73,18 @@ document.getElementById('generate').addEventListener('click', performAction2);
   let allData = await getAllData('http://localhost:3000/getData');
   displayAllData(allData);
 })();
+
+// async function performAction(event){
+//   const zipCode = document.getElementById('zip').value;
+//   const userInput = document.getElementById('feelings').value;
+//   console.log("zipCode: ", zipCode);
+//   weatherInfo = await getWeather(baseURL, zipCode, apiKey);
+//   console.log("temp", weatherInfo.main.temp);
+//   await postData('http://localhost:3000/postData', {temp: weatherInfo.main.temp, date: dayDate, userResponse: userInput});
+//   allData = await getAllData('http://localhost:3000/getData');
+//   console.log('allData', allData);
+//   displayAllData(allData);
+// }
+// keeping the function because I like it better then chaining promises.
 
 
