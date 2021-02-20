@@ -1,4 +1,3 @@
-
 async function postInput(url = '', input = {}){
   let response = await fetch(url, {method: "POST", headers: {
     'Content-type': 'application/json',
@@ -10,16 +9,13 @@ async function postInput(url = '', input = {}){
   console.log('NewRes: ', NewRes);
 }
 
-
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=5289d2618fbe314688d67b5f54a15e24';
-
-
-// api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '&appid=5289d2618fbe314688d67b5f54a15e24';
+const units = '&units=imperial'
 
 async function getData(baseURL, zip, apiKey){
   console.log('adress:', baseURL+zip+apiKey )
-  let response = await fetch(baseURL+zip+apiKey);
+  let response = await fetch(baseURL+zip+apiKey+units);
   let data = await response.json();
   console.log('data:', data);
   return data;
@@ -28,8 +24,6 @@ async function getData(baseURL, zip, apiKey){
 let today = new Date();
 
 let dayDate = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();  // from https://phoenixnap.com/kb/how-to-get-the-current-date-and-time-javascript
-
-console.log(dayDate);
 
 async function postData(url = '', input){
   let response = await fetch(url, {method: "POST", headers: {
@@ -55,7 +49,6 @@ function kelvinToFahrenheit(temp){
   return fahrTemp;
 }
 
-
 function displayAllData(data){
   let Ftemp = kelvinToFahrenheit(data.temp);
   let date = document.getElementById('date').textContent = data.date;
@@ -63,9 +56,6 @@ function displayAllData(data){
   let content = document.getElementById('content').textContent = data.userResponse;
   console.log(1);
 }
-
-
-
 
 let weatherInfo;
 async function performAction(event){
