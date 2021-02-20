@@ -30,13 +30,3 @@ app.post('/postData', function (req, res) {
   projectData.userResponse = req.body.userResponse;
   res.send('POST received')
 })
-
-MovieData = [];
-
-
-app.post('/addMovie', (req, res) => {
-  console.log(req.body); 
-  MovieData.push(req.body);
-  res.send(MovieData);
-})
- 

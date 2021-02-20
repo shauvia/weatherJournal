@@ -13,7 +13,7 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&appid=5289d2618fbe314688d67b5f54a15e24';
 const units = '&units=imperial'
 
-async function getData(baseURL, zip, apiKey){
+async function getWeather(baseURL, zip, apiKey){
   console.log('adress:', baseURL+zip+apiKey )
   let response = await fetch(baseURL+zip+apiKey+units);
   let data = await response.json();
@@ -31,7 +31,7 @@ async function postData(url = '', input){
   },
   body: JSON.stringify(input),
 });
-  console.log("Fetch zwrócony: ", response);
+  console.log("Fetch returned: ", response);
   let NewRes = await response.text();
   console.log('NewRes: ', NewRes);
 }
@@ -44,33 +44,44 @@ async function getAllData(url = '') {
   return content;
 }
 
-function kelvinToFahrenheit(temp){
-  let fahrTemp = Math.round((temp - 273.15) * 9/5 + 32);
-  return fahrTemp;
-}
 
 function displayAllData(data){
-  let Ftemp = kelvinToFahrenheit(data.temp);
   let date = document.getElementById('date').textContent = data.date;
-  let temp = document.getElementById('temp').textContent = Ftemp + " " + 'F';
+  let temp = document.getElementById('temp').textContent = data.temp;
   let content = document.getElementById('content').textContent = data.userResponse;
   console.log(1);
 }
 
-let weatherInfo;
-async function performAction(event){
+
+// async function performAction(event){
+//   const zipCode = document.getElementById('zip').value;
+//   const userInput = document.getElementById('feelings').value;
+//   console.log("zipCode: ", zipCode);
+//   weatherInfo = await getWeather(baseURL, zipCode, apiKey);
+//   console.log("temp", weatherInfo.main.temp);
+//   await postData('http://localhost:3000/postData', {temp: weatherInfo.main.temp, date: dayDate, userResponse: userInput});
+//   allData = await getAllData('http://localhost:3000/getData');
+//   console.log('allData', allData);
+//   displayAllData(allData);
+// }
+// keeping the function because I like it.
+
+function performAction2(event){
   const zipCode = document.getElementById('zip').value;
   const userInput = document.getElementById('feelings').value;
   console.log("zipCode: ", zipCode);
-  weatherInfo = await getData(baseURL, zipCode, apiKey);
-  console.log("temp", weatherInfo.main.temp);
-  await postData('http://localhost:3000/postData', {temp: weatherInfo.main.temp, date: dayDate, userResponse: userInput});
-  allData = await getAllData('http://localhost:3000/getData');
-  console.log('allData', allData);
-  displayAllData(allData);
+  getWeather(baseURL, zipCode, apiKey).then((weatherInfo) => {
+    console.log("temp", weatherInfo.main.temp);
+    postData('http://localhost:3000/postData', {temp: weatherInfo.main.temp, date: dayDate, userResponse: userInput}).then(() => {
+    getAllData('http://localhost:3000/getData').then((allData) => {
+      console.log('allData', allData);
+      displayAllData(allData);
+      });
+    });
+  });
 }
 
-document.getElementById('generate').addEventListener('click', performAction);
+document.getElementById('generate').addEventListener('click', performAction2);
 
 (async() => {
   let allData = await getAllData('http://localhost:3000/getData');
